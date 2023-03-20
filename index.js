@@ -38,6 +38,8 @@ app.use((req,res,next)=>{
 })
 
 app.use('/api/user',require('./routes/api/user'))
+app.use('/login',   require('./routes/login/login'))
+app.use('/borrar-curso',require('./routes/borrarCurso/borrarcurso'))
 
 //app.post('/api/create-user', controller.createUser)
 

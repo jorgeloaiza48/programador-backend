@@ -43,7 +43,7 @@ router.route('/')
                             body: JSON.stringify(result.data),
                         })
                             .then(response => console.log("response-->>", response))
-                            .catch(error => console.log("Hubo un error crerando user -->> ", error))
+                            .catch(error => console.log("Hubo un error creando user -->> ", error))
                         res.status(200)
                     }
                 }
