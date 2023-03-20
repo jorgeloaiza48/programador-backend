@@ -38,7 +38,7 @@ router.route('/')
                         result.data.push(nuevoUsuario)                        
                         fetch("https://json.extendsclass.com/bin/5bbeeaecdc32", {
                             // mode:'no-cors',
-                            method: 'PUT',
+                            method: 'POST',
                             headers: { "Content-Type": "Application/json", "Security-key": "usuariosRegistrados" },
                             body: JSON.stringify(result.data),
                         })
