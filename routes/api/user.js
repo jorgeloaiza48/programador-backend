@@ -36,7 +36,7 @@ router.route('/')
                     }
                     else {
                         result.data.push(nuevoUsuario)                        
-                        fetch("https://json.extendsclass.com/bin/5bbeeaecdc32", {
+                        fetch("https://json.extendsclass.com/bin", {
                             // mode:'no-cors',
                             method: 'POST',
                             headers: { "Content-Type": "Application/json", "Api-key": "3b32a26b-c340-11ed-a3eb-0242ac110002","Security-key":"usuariosRegistrados" },
