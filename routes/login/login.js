@@ -12,8 +12,7 @@ router.route('/')
             url: 'https://json.extendsclass.com/bin/5bbeeaecdc32',
             headers: { 'Content-Type': 'application/json' }
         };
-        axios(config)
-            .then(result => result.json())
+        axios(config)          
             .then(result => {
                 let userFilter = result.data.filter(element => (element.email === req.body.email && element.password === req.body.password))
                 if (userFilter.length !== 0) {
