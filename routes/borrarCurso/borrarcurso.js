@@ -43,7 +43,16 @@ router.route('/')
                     headers: { "Content-Type": "Application/json", "Security-key": "usuariosRegistrados" },
                     body: JSON.stringify(result.data),
                 })
-                    .then(response => console.log("response-->>", response))                    
+                    .then(response => {                        
+                        if (response.status === 200) {
+                            res.status(200).send('ok')
+                            return
+                        }
+                        else {
+                            res.status(400).send('No ok')
+                            return
+                        }
+                    })
                     .catch(error => {
                         console.log("Hubo un error borrando el curso deseado -->> ", error)
                     })

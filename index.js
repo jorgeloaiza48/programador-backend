@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express()
 const bodyParser = require('body-parser');
 const path = require('path');
-//const history = require('connect-history-api-fallback');
+
 
 //Al desplegar el proyecto en un servicio remoto es necesario que las rutas del backend empiecen con 'api' para no confundirlas
 //app.use(history()); // Colocamos este middleware cuando estamos usando el BrowserRouter
@@ -18,30 +18,24 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
-//use cors to allow cross origin resource sharing
-app.use(
-    cors({
-        //origin: 'http://localhost:3000',
-        //origin: 'https://programador-cursos.onrender.com',
-        // methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
-        // allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
-        credentials: true,
-    })
-);
+app.use('/api/user', require('./routes/api/user')) //crea un usuario(actualiza el json con el nuevo usuario)
+app.use('/login', require('./routes/login/login')) //inicio de sesión
+app.use('/borrar-curso', require('./routes/borrarCurso/borrarcurso')) //borra un curso específico
+app.use('/borrar-toda-programacion', require('./routes/borrarTodaLaProgramacion/borrarTodaLaprogramacion')) //borra toda la programacion del año
+app.use('/update-user', require('./routes/preferencias/preferencias'))//guarda los cursos creados por cada usuario
+app.use('/forgot-password', require('./routes/olvidoPassword/olvidoPassword'))
+//app.use('/reset-password', require('./routes/olvidoPassword/newPassword'))
+// app.use('/token-verify/:id/:token', require('./routes/olvidoPassword/tokenVerify'))
 
-app.use((req,res,next)=>{
-    //res.header('Access-Control-Allow-Origin','http://localhost:3000');
-    res.header('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-    res.header('Access-Control-Allow-Methods','Content-Type','Authorization');
-    res.send()
-    next(); 
+app.get('/reset-password/:id/:token', require('./routes/olvidoPassword/tokenVerify').tokenverify)
+app.post('/reset-password/:id',   require('./routes/olvidoPassword/newPassword').newPassword)
+
+
+//Esta línea realiza una prueba con la extensión "REST client" para comprobar las peticiones https://www.youtube.com/watch?v=6vOZSUDgSoM
+app.use('/prueba', function (req, res) {
+    res.send("Realizando una prueba")
 })
 
-app.use('/api/user',require('./routes/api/user'))
-app.use('/login',   require('./routes/login/login'))
-app.use('/borrar-curso',require('./routes/borrarCurso/borrarcurso'))
-
-//app.post('/api/create-user', controller.createUser)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => { console.log("Server listening on port ", PORT) })
