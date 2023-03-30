@@ -43,9 +43,7 @@ router.put("/", (req, res) => {
                 headers: { "Content-Type": "Application/json", "Security-key": "usuariosRegistrados" },
                 body: JSON.stringify(result.data),
             })
-                .then(response => {
-                    console.log("response-->> ", response)
-                    console.log("response.status-->> ", response.status)
+                .then(response => {                    
                     if (response.status === 200) {
                         res.status(200).send('ok')
                         return

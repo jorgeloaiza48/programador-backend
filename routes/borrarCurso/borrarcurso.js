@@ -13,13 +13,9 @@ router.route('/')
             headers: { 'Content-Type': 'application/json' }
         };
         axios(config)
-            .then(result => {
-                console.log("Resultado -->> ", result.data[0].email)
-                result.data.find(element => {
-                    console.log("Element -->>", element.email)
-                    console.log("req.body.email-->> ", req.body.email)
-                    if (element.email === req.body.email) {
-                        console.log("Encontrado")
+            .then(result => {                
+                result.data.find(element => {                   
+                    if (element.email === req.body.email) {                        
                         for (let i = 0; i < element.coordColorHoras.length; i++) {
                             let resultado = false
                             resultado = element.coordColorHoras[i].includes(req.body.color.replace(/ /g, "")) //replace(/ /g, "") quita los epacios en blanco intermedios. Por ejemplo rgb(12, 56, 125) y queda rgb(12,56,125). El color llegaba desde el front con espacios en blancos intermedios y por eso no había una coincidencia en la búsquedad. https://es.stackoverflow.com/questions/165669/como-eliminar-los-espacios-en-blanco-en-un-string                
