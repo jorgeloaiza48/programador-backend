@@ -29,8 +29,7 @@ router.put("/", (req, res) => {
             }
             else {
                 for (x of result.data) {
-                    if (x.email === req.body.email) {
-                        console.log("Encontrado")
+                    if (x.email === req.body.email) {                       
                         res.status(400).send('Usuario ya existe')
                         return
                     }
