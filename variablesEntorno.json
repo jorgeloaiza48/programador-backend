@@ -1,0 +1,11 @@
+{
+    "development" : {
+        "SERVER_URL" : "http://localhost:3000"
+    },
+    "production" : {
+        "SERVER_URL" : "https://programador-cursos.onrender.com"
+    },
+    "password":{
+        "pass": "George4810008968@#3" 
+    }
+}

@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 
+
 //Al desplegar el proyecto en un servicio remoto es necesario que las rutas del backend empiecen con 'api' para no confundirlas
 //app.use(history()); // Colocamos este middleware cuando estamos usando el BrowserRouter
 //app.use('/', express.static(path.join(__dirname, '/build/')));

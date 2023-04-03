@@ -21,8 +21,7 @@ router.put("/", (req, res) => {
                     element.totalHorasPorMes = [] //se borra el array para que no se acumulen los datos de forma innecesaria
                     element.totalHorasPorMes.push(req.body.totalHorasPorMes)
                 }
-            });
-            console.log("User con las preferencias -->> ",User)
+            });            
             fetch("https://json.extendsclass.com/bin/5bbeeaecdc32", {
                 method: 'PUT',
                 headers: { "Content-Type": "Application/json", "Security-key": "usuariosRegistrados" },
