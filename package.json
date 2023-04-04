@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm install",
-    "build": "npm run build",
+    "dev": "set NODE_ENV=development && node index",
+    "build": "set NODE_ENV=production && node index",
     "start": "node index.js",
     "programador-backend": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
