@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express()
 const bodyParser = require('body-parser');
 const path = require('path');
-
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}`})   //carga las variables del archivo .env
 
 
 //Al desplegar el proyecto en un servicio remoto es necesario que las rutas del backend empiecen con 'api' para no confundirlas
