@@ -17,10 +17,10 @@ router.post("/", (req, res) => {
         require('dotenv').config()   //carga las variables del archivo .env
         URL = process.env.URL
     }
-    else {
-        URL = `https://programador-cursos.onrender.com`
-    }
-
+    // else {
+    //     URL = process.env.REMOTE
+    // }
+console.log("URL -->> ",URL)
 
     let config = {
         method: 'GET',
