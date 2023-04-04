@@ -7,20 +7,13 @@ const nodemailer = require("nodemailer")
 const JWT_SECRTET = "some super secret..."
 const path = require('path')
 //const envJSON = require('../../variablesEntorno.json')
-let URL = ""
+//let URL = ""
 //console.log(envJSON.development.SERVER_URL)
 
 router.post("/", (req, res) => {
 
     const NODE_ENV = process.env.NODE_ENV || 'development' //si la variable NODE_ENV no está definida entonce la crea con valor "development"   
-    if (NODE_ENV !== 'production') {  //Está línea pregunta si no se está en un entorno de producción
-        //link = `http://localhost:3000/#/reset-password/${userFilter[0].id}/${token}`
-        require('dotenv').config()   //carga las variables del archivo .env
-        URL = process.env.URL
-    }
-    //else {
-    //link = `https://programador-cursos.onrender.com/#/reset-password/${userFilter[0].id}/${token}`                    
-    //}
+
     let config = {
         method: 'GET',
         maxBodyLength: Infinity,
@@ -37,7 +30,15 @@ router.post("/", (req, res) => {
                     id: userFilter[0].id
                 }
                 token = jwt.sign(payload, JWT_SECRTET, { expiresIn: '5m' })
-                link = `${URL}/#/reset-password/${userFilter[0].id}/${token}`
+                //link = `${URL}/#/reset-password/${userFilter[0].id}/${token}`
+                if (NODE_ENV !== 'production') {  //Está línea pregunta si no se está en un entorno de producción
+                    link = `http://localhost:3000/#/reset-password/${userFilter[0].id}/${token}`
+                    //require('dotenv').config()   //carga las variables del archivo .env
+                    //URL = process.env.URL
+                }
+                else {
+                    link = `https://programador-cursos.onrender.com/#/reset-password/${userFilter[0].id}/${token}`
+                }
 
                 // create reusable transporter object using the default SMTP transport               
                 const transporter = nodemailer.createTransport({
