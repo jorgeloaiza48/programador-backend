@@ -6,7 +6,7 @@ const app = express()
 const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}`})   //carga las variables del archivo .env
-
+console.log("NODE_ENV: ",process.env.NODE_ENV)
 
 //Al desplegar el proyecto en un servicio remoto es necesario que las rutas del backend empiecen con 'api' para no confundirlas
 //app.use(history()); // Colocamos este middleware cuando estamos usando el BrowserRouter

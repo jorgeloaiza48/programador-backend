@@ -14,8 +14,8 @@ let link = ""
 router.post("/", (req, res) => {
 
     //const NODE_ENV = process.env.NODE_ENV || 'development' //si la variable NODE_ENV no está definida entonce la crea con valor "development"   
-    
-    console.log("NODE_ENV -->> ",process.env.NODE_ENV)
+
+    console.log("NODE_ENV -->> ", process.env.NODE_ENV)
 
     let config = {
         method: 'GET',
@@ -33,9 +33,9 @@ router.post("/", (req, res) => {
                     id: userFilter[0].id
                 }
                 token = jwt.sign(payload, JWT_SECRTET, { expiresIn: '5m' })
-
+                    
                 if (process.env.NODE_ENV !== 'production') {  //Está línea pregunta si no se está en un entorno de producción
-                    link = `http://localhost:3000/#/reset-password/${userFilter[0].id}/${token}`                    
+                    link = `http://localhost:3000/#/reset-password/${userFilter[0].id}/${token}`
                     //URL = process.env.URL
                 }
                 else {

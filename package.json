@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm install",
+    "dev": "set NODE_ENV=development&& nodemon index.js",
+    "prod": "set NODE_ENV=production&& nodemon index.js",
     "build": "npm run build",
-    "start": "nodemon index.js",
+    "start": "nodemon  index.js",
     "programador-backend": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
