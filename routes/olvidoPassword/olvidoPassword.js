@@ -36,10 +36,12 @@ router.post("/", (req, res) => {
                 require('dotenv').config()   //carga las variables del archivo .env
                 URL = process.env.URL
                 }
-                //else {
+                else {
                 //  link = `https://programador-cursos.onrender.com/#/reset-password/${userFilter[0].id}/${token}`
-                //}
+                URL = process.env.URL //en producción
+                }
                 link = `${URL}/#/reset-password/${userFilter[0].id}/${token}`
+                
                 // create reusable transporter object using the default SMTP transport               
                 const transporter = nodemailer.createTransport({
                     service: "Gmail",
