@@ -4,7 +4,7 @@ const axios = require('axios');
 const fetch = require('node-fetch')
 
 router.route('/')
-    .post((req, res) => {
+    .put((req, res) => {
 
         let config = {
             method: 'GET',
@@ -13,7 +13,7 @@ router.route('/')
             headers: { 'Content-Type': 'application/json' }
         };
         axios(config)
-            .then(result => {                
+            .then(result => {                                
                 result.data.find(element => {                   
                     if (element.email === req.body.email) {                        
                         for (let i = 0; i < element.coordColorHoras.length; i++) {
@@ -32,7 +32,7 @@ router.route('/')
                             }
                         }
                     }
-                })
+                })                
                 fetch("https://json.extendsclass.com/bin/5bbeeaecdc32", {
                     // mode:'no-cors',
                     method: 'PUT',

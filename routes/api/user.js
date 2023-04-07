@@ -24,8 +24,8 @@ router.put("/", (req, res) => {
                 totalHorasPorMes: [],
                 fechaCreacion: new Date()
             }
-            if (result.data.length === 0) {
-                result.data = nuevoUsuario
+            if (result.data.length === 0) {               
+                result.data.push(nuevoUsuario)               
             }
             else {
                 for (x of result.data) {
